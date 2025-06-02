@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean id="studentRepository" class="org.acme.data.StudentRepositoryDB"/>
+    <bean id="partners" class="org.acme.integration.FBIWantedIntegration"/>
+
+    <bean id="studentManager" class="org.acme.business.StudentManager">
+        <constructor-arg ref="studentRepository"/>
+        <constructor-arg ref="partners"/>
+
+    </bean>
+    <bean id="gui" class="org.acme.gui.GUI">
+        <constructor-arg ref="studentManager"/>
+    </bean>
+
+</beans>
